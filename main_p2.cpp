@@ -23,8 +23,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
   rational_t a(1, 2), b(3);
 
   // FASE I
