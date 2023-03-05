@@ -16,8 +16,7 @@
 using namespace std;
 
 template<class T>
-class vector_t
-{
+class vector_t {
 public:
   vector_t(const int = 0);
   ~vector_t();
@@ -53,25 +52,22 @@ private:
 
 
 template<class T>
-vector_t<T>::vector_t(const int n)
-{ sz_ = n;
+vector_t<T>::vector_t(const int n) {
+  sz_ = n;
   build();
 }
 
 
 
 template<class T>
-vector_t<T>::~vector_t()
-{
+vector_t<T>::~vector_t() {
   destroy();
 }
 
 
 
 template<class T>
-void
-vector_t<T>::build()
-{
+void vector_t<T>::build() {
   v_ = NULL;
   if (sz_ != 0) {
     v_ = new T[sz_];
@@ -82,9 +78,7 @@ vector_t<T>::build()
 
 
 template<class T>
-void
-vector_t<T>::destroy()
-{
+void vector_t<T>::destroy() {
   if (v_ != NULL) {
     delete[] v_;
     v_ = NULL;
@@ -95,9 +89,7 @@ vector_t<T>::destroy()
 
 
 template<class T>
-void
-vector_t<T>::resize(const int n)
-{
+void vector_t<T>::resize(const int n) {
   destroy();
   sz_ = n;
   build();
@@ -106,9 +98,7 @@ vector_t<T>::resize(const int n)
 
 
 template<class T>
-inline T
-vector_t<T>::get_val(const int i) const
-{
+inline T vector_t<T>::get_val(const int i) const {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
@@ -116,18 +106,14 @@ vector_t<T>::get_val(const int i) const
 
 
 template<class T>
-inline int
-vector_t<T>::get_size() const
-{
+inline int vector_t<T>::get_size() const {
   return sz_;
 }
 
 
 
 template<class T>
-void
-vector_t<T>::set_val(const int i, const T d)
-{
+void vector_t<T>::set_val(const int i, const T d) {
   assert(i >= 0 && i < get_size());
   v_[i] = d;
 }
@@ -135,9 +121,7 @@ vector_t<T>::set_val(const int i, const T d)
 
 
 template<class T>
-T&
-vector_t<T>::at(const int i)
-{
+T& vector_t<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
@@ -145,18 +129,14 @@ vector_t<T>::at(const int i)
 
 
 template<class T>
-T&
-vector_t<T>::operator[](const int i)
-{
+T& vector_t<T>::operator[](const int i) {
   return at(i);
 }
 
 
 
 template<class T>
-const T&
-vector_t<T>::at(const int i) const
-{
+const T& vector_t<T>::at(const int i) const {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
@@ -164,18 +144,14 @@ vector_t<T>::at(const int i) const
 
 
 template<class T>
-const T&
-vector_t<T>::operator[](const int i) const
-{
+const T& vector_t<T>::operator[](const int i) const {
   return at(i);
 }
 
 
 
 template<class T>
-void
-vector_t<T>::write(ostream& os) const
-{ 
+void vector_t<T>::write(ostream& os) const { 
   os << get_size() << ":\t";
   for (int i = 0; i < get_size(); i++)
     os << at(i) << "\t";
@@ -185,9 +161,7 @@ vector_t<T>::write(ostream& os) const
 
 
 template<class T>
-void
-vector_t<T>::read(istream& is)
-{
+void vector_t<T>::read(istream& is) {
   is >> sz_;
   resize(sz_);
   for (int i = 0; i < sz_; ++i)
@@ -197,16 +171,13 @@ vector_t<T>::read(istream& is)
 
 // FASE II: producto escalar
 template<class T>
-T
-scal_prod(const vector_t<T>& v, const vector_t<T>& w)
-{
+T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
   // rellenar código
 }
 
 
 
 double
-scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
-{
+scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
   // rellenar código 
 }
