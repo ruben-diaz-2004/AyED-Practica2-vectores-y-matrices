@@ -163,9 +163,9 @@ void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
   // Calcular el producto de las matrices A y B
   for(int i{0}; i< A.get_m(); i++) {
       for(int j{0}; j < A.get_m(); j++) {
-          (i,j) = 0;
+          pos(i,j) = 0;
           for(int k{0}; k < A.get_m(); k++) {
-              (i,j) += A(i,k) * B(k,j);
+              pos(i,j) += A.pos(i,k) * B.pos(k,j);
           }
       }
   }
