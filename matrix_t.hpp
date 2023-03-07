@@ -204,7 +204,7 @@ void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
   resize(A.get_m(), B.get_n());
   // Calcular el producto de las matrices A y B
   for(int i{1}; i <= A.get_m(); i++) {
-      for(int j{1}; j <= A.get_n(); j++) {
+      for(int j{1}; j <= B.get_n(); j++) {
           // at(i,j) = 0;
           for(int k{1}; k <= A.get_n(); k++) {
               at(i,j) = at(i,j) + A.at(i,k) * B.at(k,j);
