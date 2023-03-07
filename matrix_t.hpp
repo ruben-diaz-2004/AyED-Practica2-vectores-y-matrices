@@ -207,7 +207,7 @@ void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
       for(int j{1}; j <= A.get_m(); j++) {
           // at(i,j) = 0;
           for(int k{1}; k <= A.get_m(); k++) {
-              at(i,j) = at(i,j) + A(i,k) * B(k,j);
+              at(i,j) = at(i,j) + A.at(i,k) * B.at(k,j);
           }
       }
   }
