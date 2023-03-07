@@ -51,7 +51,11 @@ private:
 };
 
 
-
+/**
+ * Constructor de matrices pasando filas y columnas
+ * @param m, filas
+ * @param n, columnas
+*/
 template<class T> matrix_t<T>::matrix_t(const int m, const int n) { 
   m_ = m;
   n_ = n;
@@ -59,13 +63,19 @@ template<class T> matrix_t<T>::matrix_t(const int m, const int n) {
 }
 
 
-
+/**
+ * Destructor de la clase matrix_t
+*/
 template<class T>
 matrix_t<T>::~matrix_t()
 {}
 
 
-
+/**
+ * Redimensiona una matriz
+ * @param m, filas
+ * @param n, columnas
+*/
 template<class T>
 void matrix_t<T>::resize(const int m, const int n) {
   assert(m > 0 && n > 0);
@@ -75,21 +85,29 @@ void matrix_t<T>::resize(const int m, const int n) {
 }
 
 
-
+/**
+ * Getter de las filas
+*/
 template<class T>
 inline int matrix_t<T>::get_m() const {
   return m_;
 }
 
 
-
+/**
+ * Getter de las columnas
+*/
 template<class T>
 inline int matrix_t<T>::get_n() const {
   return n_;
 }
 
 
-
+/**
+ * Lo utilizamos como getter-setter
+ * Comprueba las dimensiones de la matriz y devuelve la posición
+ * en el vector del punto que pasamos
+*/
 template<class T>
 T& matrix_t<T>::at(const int i, const int j) {
   assert(i > 0 && i <= get_m());
@@ -98,14 +116,21 @@ T& matrix_t<T>::at(const int i, const int j) {
 }
 
 
-
+/**
+ * Sobrecarga del operador ()
+ * Llama al método at.
+*/
 template<class T>
 T& matrix_t<T>::operator()(const int i, const int j) {
   return at(i, j);
 }
 
 
-
+/**
+ * Lo utilizamos como getter-setter
+ * Comprueba las dimensiones de la matriz y devuelve la posición
+ * en el vector del punto que pasamos
+*/
 template<class T>
 const T& matrix_t<T>::at(const int i, const int j) const {
   assert(i > 0 && i <= get_m());
@@ -114,14 +139,20 @@ const T& matrix_t<T>::at(const int i, const int j) const {
 }
 
 
-
+/**
+ * Sobrecarga del operador ()
+ * Llama al método at.
+*/
 template<class T>
 const T& matrix_t<T>::operator()(const int i, const int j) const {
   return at(i, j);
 }
 
 
-
+/**
+ * Método de escritura de la matriz
+ * Muestra en pantalla la matriz deseada
+*/
 template<class T>
 void matrix_t<T>::write(ostream& os) const { 
   os << get_m() << "x" << get_n() << endl;
@@ -134,7 +165,10 @@ void matrix_t<T>::write(ostream& os) const {
 }
 
 
-
+/**
+ * Método de lectura de la matriz
+ * Lee los elementos de una matriz
+*/
 template<class T>
 void matrix_t<T>::read(istream& is) {
   is >> m_ >> n_;
@@ -144,7 +178,10 @@ void matrix_t<T>::read(istream& is) {
       is >> at(i, j);
 }
 
-
+/**
+ * Indica la posición en el vector de un elemento
+ * de la matriz
+*/
 template<class T>
 inline
 int matrix_t<T>::pos(const int i, const int j) const {
@@ -156,6 +193,11 @@ int matrix_t<T>::pos(const int i, const int j) const {
 
 
 // FASE III: producto matricial
+/**
+ * Calcula el producto matricial de las matrices A y B
+ * @param A. Primera matriz
+ * @param B. Segunda matriz
+*/
 template<class T>
 void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
   assert(A.get_n() == B.get_m());
@@ -163,11 +205,10 @@ void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
   // Calcular el producto de las matrices A y B
   for(int i{1}; i <= A.get_m(); i++) {
       for(int j{1}; j <= A.get_m(); j++) {
-          at(i,j) = 0;
+          // at(i,j) = 0;
           for(int k{1}; k <= A.get_m(); k++) {
               at(i,j) = at(i,j) + A(i,k) * B(k,j);
           }
       }
   }
-  // rellenar código
 }
