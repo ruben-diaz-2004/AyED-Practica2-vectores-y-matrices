@@ -157,7 +157,17 @@ int matrix_t<T>::pos(const int i, const int j) const {
 
 // FASE III: producto matricial
 template<class T>
-void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
-{
+void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
+  assert(A.get_n() == B.get_m());
+  resize(A.get_m(), B.get_n());
+  // Calcular el producto de las matrices A y B
+  for(int i=0; i<n; i++) {
+      for(int j=0; j<n; j++) {
+          C(i,j) = 0;
+          for(int k=0; k<n; k++) {
+              C(i,j) += A(i,k) * B(k,j);
+          }
+      }
+  }
   // rellenar código
 }

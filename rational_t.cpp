@@ -111,24 +111,28 @@ rational_t rational_t::divide(const rational_t& r) const {
 
 // FASE I: operadores
 rational_t operator+(const rational_t& a, const rational_t& b) {
+  return rational_t(a.add(b));
   // rellenar código
 }
 
 
 
 rational_t operator-(const rational_t& a, const rational_t& b) {
+  return rational_t(a.substract(b));
   // rellenar código
 }
 
 
 
 rational_t operator*(const rational_t& a, const rational_t& b) {
+  return rational_t(a.multiply(b));
   // rellenar código
 }
 
 
 
 rational_t operator/(const rational_t& a, const rational_t& b) {
+  return rational_t(a.divide(b));
   // rellenar código
 }
 

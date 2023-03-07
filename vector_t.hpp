@@ -170,14 +170,18 @@ void vector_t<T>::read(istream& is) {
 
 
 // FASE II: producto escalar
-template<class T>
-T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
-  // rellenar código
+template<class T> T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
+  assert(v.get_size() == w.get_size());
+  int product{0};
+  for (int i{0}; i < v.get_size(); ++i) {
+    product = product + v[i] * w[i];
+  }
+  return product;
 }
 
 
 
-double
-scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
+double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
+
   // rellenar código 
 }
