@@ -50,22 +50,27 @@ private:
 };
 
 
-
+/**
+ * Constructor de la clase vector_t
+*/
 template<class T>
 vector_t<T>::vector_t(const int n) {
   sz_ = n;
   build();
 }
 
-
-
+/**
+ * Destructor de la clase vector_t
+*/
 template<class T>
 vector_t<T>::~vector_t() {
   destroy();
 }
 
-
-
+/**
+ * Método para contruir los vectores
+ * Lo utiliza el constructor
+*/
 template<class T>
 void vector_t<T>::build() {
   v_ = NULL;
@@ -75,8 +80,10 @@ void vector_t<T>::build() {
   }
 }
 
-
-
+/**
+ * Método que utiliza el destructor
+ * Elimina el vector que ocupaba espacio en memoria
+*/
 template<class T>
 void vector_t<T>::destroy() {
   if (v_ != NULL) {
@@ -86,8 +93,9 @@ void vector_t<T>::destroy() {
   sz_ = 0;
 }
 
-
-
+/**
+ * Método para cambiar el tamaño de un vector
+*/
 template<class T>
 void vector_t<T>::resize(const int n) {
   destroy();
@@ -95,8 +103,9 @@ void vector_t<T>::resize(const int n) {
   build();
 }
 
-
-
+/**
+ * Devuelve el valor de una posición del vector
+*/
 template<class T>
 inline T vector_t<T>::get_val(const int i) const {
   assert(i >= 0 && i < get_size());
@@ -104,52 +113,60 @@ inline T vector_t<T>::get_val(const int i) const {
 }
 
 
-
+/**
+ * Getter del tamaño del vector
+*/
 template<class T>
 inline int vector_t<T>::get_size() const {
   return sz_;
 }
 
-
-
+/**
+ * Setter del valor de una posición del vector
+*/
 template<class T>
 void vector_t<T>::set_val(const int i, const T d) {
   assert(i >= 0 && i < get_size());
   v_[i] = d;
 }
 
-
-
+/**
+ * Getter-setter de una posición de memoria
+*/
 template<class T>
 T& vector_t<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
-
-
+/**
+ * Sobrecarga del operador []
+*/
 template<class T>
 T& vector_t<T>::operator[](const int i) {
   return at(i);
 }
 
-
-
+/**
+ * Getter-setter de una posición del vector
+*/
 template<class T>
 const T& vector_t<T>::at(const int i) const {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
-
-
+/**
+ * Sobrecarga del operador []
+*/
 template<class T>
 const T& vector_t<T>::operator[](const int i) const {
   return at(i);
 }
 
-
-
+/**
+ * Método de escritura de un vector
+*/
 template<class T>
 void vector_t<T>::write(ostream& os) const { 
   os << get_size() << ":\t";
@@ -158,8 +175,9 @@ void vector_t<T>::write(ostream& os) const {
   os << endl;
 }
 
-
-
+/**
+ * Método de lectura de un vector
+*/
 template<class T>
 void vector_t<T>::read(istream& is) {
   is >> sz_;
@@ -170,6 +188,11 @@ void vector_t<T>::read(istream& is) {
 
 
 // FASE II: producto escalar
+/**
+ * Calcula el producto escalar de dos vectores
+ * @param v. Primer vector
+ * @param w. Segundo vector
+*/
 template<class T> T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
   assert(v.get_size() == w.get_size());
   T product{0};
@@ -180,7 +203,11 @@ template<class T> T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
 }
 
 
-
+/**
+ * Calcula el producto escalar de dos vectores
+ * @param v. Primer vector
+ * @param w. Segundo vector
+*/
 double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
   assert(v.get_size() == w.get_size());
   rational_t product;
@@ -189,5 +216,4 @@ double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
   }
   double scal_product = product.value();
   return scal_product;
-  // rellenar código 
 }

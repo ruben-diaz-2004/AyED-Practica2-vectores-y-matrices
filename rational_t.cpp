@@ -137,7 +137,7 @@ rational_t rational_t::divide(const rational_t& r) const {
  * Sobrecarga del operador suma
 */
 rational_t operator+(const rational_t& a, const rational_t& b) {
-  return rational_t(a.add(b));
+  return a.add(b);
   // rellenar código
 }
 
@@ -146,7 +146,7 @@ rational_t operator+(const rational_t& a, const rational_t& b) {
  * Sobrecarga del operador resta
 */
 rational_t operator-(const rational_t& a, const rational_t& b) {
-  return rational_t(a.substract(b));
+  return a.substract(b);
   // rellenar código
 }
 
@@ -154,7 +154,7 @@ rational_t operator-(const rational_t& a, const rational_t& b) {
  * Sobrecarga del operador *
 */
 rational_t operator*(const rational_t& a, const rational_t& b) {
-  return rational_t(a.multiply(b));
+  return a.multiply(b);
   // rellenar código
 }
 
@@ -162,7 +162,7 @@ rational_t operator*(const rational_t& a, const rational_t& b) {
  * Sobrecarga del operador /
 */
 rational_t operator/(const rational_t& a, const rational_t& b) {
-  return rational_t(a.divide(b));
+  return a.divide(b);
   // rellenar código
 }
 
