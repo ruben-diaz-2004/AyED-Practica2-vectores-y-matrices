@@ -161,11 +161,11 @@ void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) {
   assert(A.get_n() == B.get_m());
   resize(A.get_m(), B.get_n());
   // Calcular el producto de las matrices A y B
-  for(int i{0}; i< A.get_m(); i++) {
-      for(int j{0}; j < A.get_m(); j++) {
-          pos(i,j) = 0;
-          for(int k{0}; k < A.get_m(); k++) {
-              pos(i,j) += A.pos(i,k) * B.pos(k,j);
+  for(int i{1}; i <= A.get_m(); i++) {
+      for(int j{1}; j <= A.get_m(); j++) {
+          at(i,j) = 0;
+          for(int k{1}; k <= A.get_m(); k++) {
+              at(i,j) += A(i,k) * B(k,j);
           }
       }
   }
