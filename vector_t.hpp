@@ -208,11 +208,20 @@ template<class T> T scal_prod(const vector_t<T>& v, const vector_t<T>& w) {
  * @param v. Primer vector
  * @param w. Segundo vector
 */
+// double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
+//   assert(v.get_size() == w.get_size());
+//   rational_t product;
+//   for (int i{0}; i < v.get_size(); ++i) {
+//     product = product + v[i].value() * w[i].value();
+//   }
+//   double scal_product = product.value();
+//   return scal_product;
+// }
 double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) {
   assert(v.get_size() == w.get_size());
   rational_t product;
   for (int i{0}; i < v.get_size(); ++i) {
-    product = product + v[i].value() * w[i].value();
+    product = product + v[i] * w[i];
   }
   double scal_product = product.value();
   return scal_product;
